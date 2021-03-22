@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using AdvertApi.Services;
+using AdvertApi.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace AdvertApi
 {
@@ -31,6 +33,9 @@ namespace AdvertApi
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddTransient<IAdvertStorageService, DynomeDBAdvertStorage>();
             services.AddControllers();
+
+            services.AddHealthChecks().AddCheck<StoregeHealthCheck>("Storage");
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AdvertApi", Version = "v1" });
@@ -47,6 +52,8 @@ namespace AdvertApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AdvertApi v1"));
             }
+
+            app.UseHealthChecks("/health");
 
             app.UseHttpsRedirection();
 
