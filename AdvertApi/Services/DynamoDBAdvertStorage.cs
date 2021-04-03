@@ -22,7 +22,7 @@ namespace AdvertApi.Services
         {
             var dbModel = _mapper.Map<AdvertDbModel>(model);
 
-            dbModel.Id = new Guid().ToString();
+            dbModel.Id = Guid.NewGuid().ToString();
             dbModel.CreatinDateTime = DateTime.Now;
             dbModel.Status = AdvertStatus.Pending;
 
