@@ -1,6 +1,6 @@
 ﻿namespace AdvertApi.Models
 {
-    public class CreateAdvertReponse
+    public class CreateAdvertResponse
     {
         public string Id { get; set; }
     }

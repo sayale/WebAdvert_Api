@@ -28,7 +28,7 @@ namespace AdvertApi.Controllers
         [HttpPost]
         [Route("Create")]
         [ProducesResponseType(404)]
-        [ProducesResponseType(201,Type=typeof(CreateAdvertReponse))]
+        [ProducesResponseType(201,Type=typeof(CreateAdvertResponse))]
         public async Task<IActionResult> Create(AdvertModel model)
         {
             string recordId;
@@ -45,7 +45,7 @@ namespace AdvertApi.Controllers
                 return StatusCode(500, ex.Message);
             }
 
-            return StatusCode(201, new CreateAdvertReponse {Id = recordId });
+            return StatusCode(201, new CreateAdvertResponse {Id = recordId });
         }
 
         [HttpPut]
