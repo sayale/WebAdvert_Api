@@ -24,5 +24,12 @@ namespace AdvertApi.Services
 
         [DynamoDBProperty]
         public AdvertStatus Status { get; set; }
+
+        [DynamoDBProperty]
+        public string FilePath { get; set; }
+
+        [DynamoDBProperty]
+        public string UserName { get; set; }
+
     }
 }
